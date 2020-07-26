@@ -9,7 +9,7 @@ class CategoiresApi{
     var _client = new HttpClient();
     _client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
 
-    String allCategories = ApiUtil.MAIN_API_URL + ApiUtil.ALL_CATEGORIES + '?q={http}';
+    String allCategories = ApiUtil.MAIN_API_URL + ApiUtil.ALL_CATEGORIES;
     Map<String,String> headers = {
       'Accept' : 'application/json'
     };
