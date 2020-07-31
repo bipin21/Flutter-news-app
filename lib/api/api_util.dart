@@ -4,5 +4,10 @@ class ApiUtil{
 
   static const String ALL_CATEGORIES = '/categories';
 
+  static const String CATEGORY_POSTS = '/categories/';
+
+  static String categoryPosts(String categoryID){
+    return MAIN_API_URL + ALL_CATEGORIES + '/' + categoryID + '/posts';
+  }
 
 }
