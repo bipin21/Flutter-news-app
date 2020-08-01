@@ -13,4 +13,8 @@ class Author{
   }
 
 
+  String getAuthorFormattedName(){
+    return '${this.first_name} ${this.last_name}';
+  }
+
 }

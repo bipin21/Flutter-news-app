@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_app/api/api_util.dart';
 import 'package:flutter_app/models/author.dart';
 import 'package:flutter_app/models/category.dart';
 import 'package:flutter_app/models/post_comment.dart';
@@ -55,13 +57,20 @@ class Post {
 
   String getFeaturedImage(){
     if(this.images.length > 0){
-      return this.images[0].image_url;
+      this.images[0].image_url = this.images[0].image_url.replaceAll('public', 'uploads');
+      return ApiUtil.MAIN_APP_URL + this.images[0].image_url;
     }
     return null;
   }
 
   String getAuthorFormattedName(){
-  return '${this.author.first_name} ${this.author.last_name}';
+  return this.author.getAuthorFormattedName();
   }
 
+  ImageProvider getPostImage() {
+    if (this.getFeaturedImage() == null) {
+      return ExactAssetImage('assets/images/placeholder.png');
+    }
+    return NetworkImage(this.getFeaturedImage());
+  }
 }

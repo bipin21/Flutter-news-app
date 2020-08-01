@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/post.dart';
+import 'package:flutter_app/screens/singlepost.dart';
 
 class PostCard extends StatelessWidget {
   Post post;
@@ -9,12 +10,15 @@ class PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+//    placeholder: 'assets/images/placeholde.png',
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: InkWell(
           onTap: () {
             // single post screen
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SinglePostScreen(post)));
           },
           child: Row(
             children: <Widget>[
@@ -22,9 +26,10 @@ class PostCard extends StatelessWidget {
                 margin: EdgeInsets.only(right: 16),
                 width: MediaQuery.of(context).size.width * 0.25,
                 child: Image(
-                  image: _getPostImage(),
+                  image: post.getPostImage(),
                   fit: BoxFit.cover,
                 ),
+
               ),
               Flexible(
                 child: Column(
@@ -61,10 +66,5 @@ class PostCard extends StatelessWidget {
     );
   }
 
-  ImageProvider _getPostImage() {
-    if (post.getFeaturedImage() == null) {
-      return ExactAssetImage('assets/images/placeholder.png');
-    }
-    return NetworkImage(post.getFeaturedImage());
-  }
+
 }

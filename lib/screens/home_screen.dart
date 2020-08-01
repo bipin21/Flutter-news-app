@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
     for (Post post in posts) {
       if (post.images.length > 0) {
         var newString = post.images[0].image_url;
-        post.images[0].image_url = newString.replaceAll('public/', 'uploads');
+        post.images[0].image_url = newString.replaceAll('public', 'uploads');
         postWithImages.add(post);
       }
     }
