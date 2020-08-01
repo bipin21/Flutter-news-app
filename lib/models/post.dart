@@ -52,4 +52,16 @@ class Post {
       comments.add(PostComment.fromJson(item));
     }
   }
+
+  String getFeaturedImage(){
+    if(this.images.length > 0){
+      return this.images[0].image_url;
+    }
+    return null;
+  }
+
+  String getAuthorFormattedName(){
+  return '${this.author.first_name} ${this.author.last_name}';
+  }
+
 }

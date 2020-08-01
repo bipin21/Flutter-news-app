@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/api/categories_api.dart';
 import 'package:flutter_app/models/post.dart';
+import 'package:flutter_app/shared_ui/post_lists.dart';
 
 class CateogryPosts extends StatefulWidget {
   final String categoryId;
@@ -62,17 +63,7 @@ class _CateogryPostsState extends State<CateogryPosts> {
     return ListView.builder(
       itemCount: posts.length,
       itemBuilder: (BuildContext context, int position) {
-        return InkWell(
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(posts[position].post_title),
-            ),
-          ),
-          onTap: (){
-
-          },
-        );
+        return PostCard(posts[position]);
       },
     );
   }
